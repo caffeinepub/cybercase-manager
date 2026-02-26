@@ -1,0 +1,92 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T05:48:43.296Z",
+  "summary": "The diff modifies backend/main.mo to implement data models and CRUD functions for cases, incident reports, and user management. Several requirements are partially or fully met, but there are notable gaps and deviations from the spec.",
+  "missing_requirements": [
+    {
+      "id": "REQ-19",
+      "requirement": "Case type must include 'reporterPrincipal' field (not 'reporter'), 'caseType: Text' field, and stable storage using stable var arrays or HashMap with stable backup",
+      "reason": "The diff shows the Case type uses 'reporter' instead of 'reporterPrincipal', is missing the 'caseType: Text' field entirely, and the storage variables (cases, incidentReports, userRegistry) use 'let' (not 'stable var'), meaning data will not survive canister upgrades.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "requirement": "IncidentReport type must include 'linkedCaseId: ?Text' (optional Text), and UserProfile must use 'displayName' field (not 'name')",
+      "reason": "The diff shows IncidentReport.linkedCaseId is typed as 'Nat' (non-optional) rather than '?Text'. UserProfile uses 'name' instead of 'displayName'. These are structural deviations from the required data model.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "requirement": "Actor must survive upgrade without data loss using stable var or stable HashMap backup",
+      "reason": "Storage is declared with 'let' (not 'stable var'), so it will not persist across canister upgrades.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "requirement": "getAllUsers() query callable by Admin only, returning all profiles",
+      "reason": "The diff is truncated and getAllUsers() is not visible in the provided content. Cannot confirm it is implemented.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "requirement": "createCase() must accept caseType: Text parameter and store it on the Case record; Case type must include caseType field",
+      "reason": "The Case type definition in the diff does not include a 'caseType' field, so createCase() cannot store or return it.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "requirement": "submitIncidentReport() must auto-create a linked Case with caseType set to the incident type, and the returned value must include both incidentId and linkedCaseId",
+      "reason": "The diff is truncated and submitIncidentReport() is not visible. Additionally, the Case type is missing 'caseType', which is required for the auto-created case.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "requirement": "The auto-created case must have its linkedCaseId field set to the incident report ID",
+      "reason": "Case type does not include a 'linkedCaseId' field, so this cannot be satisfied.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "IncidentType is implemented as a variant type (#phishing, #malware, #ddos, #dataBreach, #unauthorizedAccess, #other) instead of Text",
+      "reason": "The spec requires incidentType as Text in both IncidentReport and as a parameter to submitIncidentReport(), but the diff defines it as a variant enum.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "AccessControl and MixinAuthorization modules are imported and used from external files (authorization/access-control, authorization/MixinAuthorization)",
+      "reason": "The spec does not mention these external authorization modules and requires all Motoko logic to remain in backend/main.mo as a single actor.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "nextCaseId and nextIncidentId counters declared as non-stable var",
+      "reason": "While ID generation is required, using non-stable var means counters reset on upgrade, which contradicts the stable storage requirement.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "backend/main.mo",
+    "project_state.json"
+  ]
+}

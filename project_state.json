@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "A cybersecurity and case management system website with high-quality UI and graphics, intended as a 6th semester project.",
+  "architectural_notes": [
+    "Web-based application targeting modern browsers with responsive design",
+    "Focus on cybersecurity domain: threat monitoring, incident management, and case tracking"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-design-and-implement-a-visually-striking-dark-themed-ui-with-a-cyberpunk-tech-aesthetic-deep-dark-backgrounds-0a0f1e-0d1b2a-neon-accent-colors-electric-green-00ff88-cyan-00d4ff-glowing-effects-animated-grid-backgrounds-and-sharp-modern-typography-monospace-for-data-sans-serif-for-headings-apply-this-theme-consistently-across-all-pages-and-components",
+      "title": "Design and implement a visually striking dark-themed UI with a cyberpunk/tech aesthetic: deep dark backgrounds (#0a0f1e, #0d1b2a), neon accent colors (electric green #00ff88, cyan #00d4ff), glowing effects, animated grid backgrounds, and sharp modern typography (monospace for data, sans-serif for headings). Apply this theme consistently across all pages and components.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-internet-identity-authentication-so-users-can-securely-log-in-after-login-distinguish-between-two-roles-admin-and-analyst-display-the-current-user-s-role-and-identity-in-the-navigation-bar",
+      "title": "Implement Internet Identity authentication so users can securely log in. After login, distinguish between two roles: Admin and Analyst. Display the current user's role and identity in the navigation bar.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-cybersecurity-threat-monitoring-dashboard-as-the-main-landing-page-after-login-display-total-active-threats-resolved-incidents-open-cases-and-system-health-status-as-animated-stat-cards-include-a-live-threat-feed-list-showing-recent-incidents-with-severity-badges-critical-high-medium-low-add-a-bar-or-line-chart-showing-incident-trends-over-the-last-7-days-using-mock-static-data",
+      "title": "Build a cybersecurity threat monitoring dashboard as the main landing page after login. Display: total active threats, resolved incidents, open cases, and system health status as animated stat cards. Include a live threat feed list showing recent incidents with severity badges (Critical, High, Medium, Low). Add a bar or line chart showing incident trends over the last 7 days using mock/static data.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-case-management-page-with-a-full-featured-case-list-table-include-columns-for-case-id-title-severity-badge-status-badge-assigned-analyst-and-created-date-add-filter-controls-for-severity-and-status-provide-a-modal-form-to-create-a-new-case-each-row-should-have-action-buttons-to-view-details-update-status-and-for-admins-delete",
+      "title": "Build a Case Management page with a full-featured case list table. Include columns for Case ID, Title, Severity badge, Status badge, Assigned Analyst, and Created Date. Add filter controls for severity and status. Provide a modal form to create a new case. Each row should have action buttons to view details, update status, and (for Admins) delete.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-case-detail-page-accessible-by-clicking-a-case-row-show-all-case-fields-a-status-timeline-history-section-and-a-notes-comments-section-where-analysts-can-add-free-text-notes-store-notes-in-the-backend-as-an-array-of-author-timestamp-content-within-the-case-record",
+      "title": "Build a Case Detail page accessible by clicking a case row. Show all case fields, a status timeline/history section, and a notes/comments section where analysts can add free-text notes. Store notes in the backend as an array of { author, timestamp, content } within the case record.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-incident-reporting-page-with-a-structured-form-to-log-new-security-incidents-fields-incident-title-type-phishing-malware-ddos-data-breach-unauthorized-access-other-description-affected-systems-text-severity-and-reporter-name-on-submission-auto-create-a-corresponding-case-in-the-backend-display-a-log-of-all-submitted-incident-reports-in-a-table-below-the-form",
+      "title": "Implement an Incident Reporting page with a structured form to log new security incidents. Fields: Incident Title, Type (Phishing / Malware / DDoS / Data Breach / Unauthorized Access / Other), Description, Affected Systems (text), Severity, and Reporter Name. On submission, auto-create a corresponding case in the backend. Display a log of all submitted incident reports in a table below the form.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-responsive-navigation-sidebar-with-links-to-dashboard-cases-incident-reports-analytics-and-for-admins-user-management-the-sidebar-should-collapse-to-an-icon-only-mode-on-smaller-screens-include-an-app-logo-with-the-cybershield-name-and-an-animated-status-indicator-showing-system-secure-or-threats-detected-based-on-open-critical-cases",
+      "title": "Add a responsive navigation sidebar with links to: Dashboard, Cases, Incident Reports, Analytics, and (for Admins) User Management. The sidebar should collapse to an icon-only mode on smaller screens. Include an app logo with the CyberShield name and an animated status indicator showing 'System Secure' or 'Threats Detected' based on open critical cases.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-analytics-page-with-visual-charts-summarizing-case-data-include-a-donut-pie-chart-for-case-distribution-by-severity-a-bar-chart-for-cases-by-type-category-and-a-status-summary-showing-counts-of-open-vs-in-progress-vs-resolved-cases-use-animated-chart-components-all-data-must-be-derived-from-cases-stored-in-the-backend",
+      "title": "Build an Analytics page with visual charts summarizing case data. Include: a donut/pie chart for case distribution by severity, a bar chart for cases by type/category, and a status summary showing counts of Open vs In Progress vs Resolved cases. Use animated chart components. All data must be derived from cases stored in the backend.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-and-integrate-the-following-visual-assets-a-futuristic-cybersecurity-hero-banner-for-the-login-landing-page-an-app-logo-mark-for-the-sidebar-and-a-background-texture-for-dashboard-cards",
+      "title": "Create and integrate the following visual assets: a futuristic cybersecurity hero banner for the login/landing page, an app logo mark for the sidebar, and a background texture for dashboard cards.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-login-and-profile-setup-flow-to-enforce-role-specific-access-after-internet-identity-login-call-getmyprofile-to-check-if-the-user-has-a-profile-if-not-show-the-profilesetupmodal-to-register-after-profile-setup-or-if-profile-exists-redirect-based-on-role-both-admin-and-analyst-land-on-the-dashboard-but-admin-only-sections-user-management-delete-assign-case-actions-must-be-hidden-or-disabled-for-analyst-role-show-the-user-s-role-label-and-display-name-in-the-navigation-header-and-sidebar",
+      "title": "Update the frontend login and profile setup flow to enforce role-specific access. After Internet Identity login, call getMyProfile() to check if the user has a profile. If not, show the ProfileSetupModal to register. After profile setup or if profile exists, redirect based on role: both Admin and Analyst land on the dashboard, but Admin-only sections (User Management, delete/assign case actions) must be hidden or disabled for Analyst role. Show the user's role label and display name in the navigation header and sidebar.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-all-frontend-react-query-hooks-in-usequeries-ts-to-call-the-real-backend-actor-functions-instead-of-mock-data-usegetallcases-usegetcasebyid-usecreatecase-useupdatecasestatus-useaddnotetocase-useassigncase-usedeletecase-usegetallincidentreports-usesubmitincidentreport-usegetmyprofile-and-useregisteruser-ensure-proper-cache-invalidation-on-mutations",
+      "title": "Update all frontend React Query hooks in useQueries.ts to call the real backend actor functions instead of mock data: useGetAllCases, useGetCaseById, useCreateCase, useUpdateCaseStatus, useAddNoteToCase, useAssignCase, useDeleteCase, useGetAllIncidentReports, useSubmitIncidentReport, useGetMyProfile, and useRegisterUser. Ensure proper cache invalidation on mutations.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-user-management-page-accessible-only-to-admin-users-display-a-table-of-all-registered-users-showing-their-principal-truncated-display-name-and-role-provide-a-role-toggle-control-per-row-allowing-admins-to-switch-a-user-between-analyst-and-admin-roles-by-calling-the-setuserrole-backend-function-show-a-confirmation-prompt-before-changing-roles",
+      "title": "Add a User Management page accessible only to Admin users. Display a table of all registered users showing their principal (truncated), display name, and role. Provide a role toggle control per row allowing Admins to switch a user between Analyst and Admin roles by calling the setUserRole backend function. Show a confirmation prompt before changing roles.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Cybersecurity dashboard with threat monitoring and analytics",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Case management system with case creation, tracking, and resolution workflows",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "High-quality UI with modern graphics, animations, and visual design",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "User authentication and role-based access control",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Incident reporting and logging module",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Implement a backend data model for cybersecurity cases. Each case must store: unique ID, title, description, severity (Critical/High/Medium/Low), status (Open/In Progress/Resolved/Closed), assigned analyst principal, reporter principal, creation timestamp, and last updated timestamp. Persist all cases in stable backend storage.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Expose backend query and update functions for case management: createCase, getAllCases, getCaseById, updateCaseStatus, assignCase, and deleteCase. Only Admin principals can delete or assign cases; Analysts can create and update status.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Implement a complete backend data model in main.mo with stable storage for: User profiles (principal, name, role as #admin or #analyst, createdAt), Cases (unique ID, title, description, severity variant, status variant, assignedAnalyst principal, reporterPrincipal, createdAt, updatedAt, notes array of {author, timestamp, content}), and Incident Reports (unique ID, title, type, description, affectedSystems, severity, reporterName, linkedCaseId, createdAt). Use stable var arrays or HashMap with stable backup for persistence across upgrades.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Implement role-based access control in the backend. Maintain a stable registry mapping principal to role (#admin or #analyst). Expose a registerUser(name: Text) function for first-time profile setup that assigns #analyst by default. Expose a setUserRole(target: Principal, role: Role) function callable only by Admin principals. Expose a getMyProfile() query that returns the caller's profile. The first registered user should automatically receive the #admin role.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Expose full CRUD backend functions for case management: createCase(title, description, severity, type) callable by both Admin and Analyst; getAllCases() query returning all cases; getCaseById(id) query; updateCaseStatus(id, newStatus) callable by Admin and Analyst; addNoteToCase(id, content) callable by Admin and Analyst (stores {author: caller principal text, timestamp, content}); assignCase(id, analystPrincipal) callable by Admin only; deleteCase(id) callable by Admin only. All mutating functions must verify caller identity and role before proceeding.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Expose backend functions for incident report management: submitIncidentReport(title, type, description, affectedSystems, severity, reporterName) callable by any authenticated user — this must also auto-create a linked case and return both the incident report ID and the new case ID; getAllIncidentReports() query returning all reports; getIncidentReportById(id) query.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Implement a complete backend data model in main.mo with stable storage for: User profiles (principal, displayName, role as #admin or #analyst, createdAt), Cases (unique ID, title, description, severity variant (#critical | #high | #medium | #low), status variant (#open | #inProgress | #resolved | #closed), assignedAnalyst as ?Principal, reporterPrincipal, createdAt, updatedAt, notes array of { author: Text, timestamp: Int, content: Text }, caseType: Text), and Incident Reports (unique ID, title, incidentType, description, affectedSystems, severity, reporterName, linkedCaseId: ?Text, createdAt). Use stable var arrays or HashMap with stable backup for persistence across upgrades.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Implement role-based access control in the backend. Maintain a stable registry mapping Principal to UserProfile. Expose registerUser(name: Text) for first-time profile setup — assigns #analyst by default, but the very first registered user automatically receives #admin. Expose setUserRole(target: Principal, role: Role) callable only by Admin principals. Expose getMyProfile() query returning the caller's profile as ?UserProfile. Expose getAllUsers() query callable by Admin only, returning all profiles.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Expose full CRUD backend functions for case management: createCase(title: Text, description: Text, severity: Severity, caseType: Text) callable by any authenticated registered user; getAllCases() query returning all cases; getCaseById(id: Text) query returning ?Case; updateCaseStatus(id: Text, newStatus: Status) callable by Admin and Analyst; addNoteToCase(id: Text, content: Text) callable by Admin and Analyst, storing { author: Principal-as-Text, timestamp: Int, content: Text }; assignCase(id: Text, analystPrincipal: Principal) callable by Admin only; deleteCase(id: Text) callable by Admin only. All mutating functions must verify caller identity and role before proceeding.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Expose backend functions for incident report management: submitIncidentReport(title: Text, incidentType: Text, description: Text, affectedSystems: Text, severity: Severity, reporterName: Text) callable by any authenticated registered user — this must also auto-create a linked Case and return a record containing both the new incident report ID and the linked case ID; getAllIncidentReports() query returning all reports; getIncidentReportById(id: Text) query returning ?IncidentReport.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "CyberCase Manager",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

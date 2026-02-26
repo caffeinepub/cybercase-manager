@@ -1,0 +1,57 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T05:48:43.298Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 0,
+    "items": [
+      {
+        "id": "REQ-19",
+        "summary": "Implement a complete backend data model in main.mo with stable storage for: User profiles (principal, displayName, role as #admin or #analyst, createdAt), Cases (unique ID, title, description, severity variant (#critical | #high | #medium | #low), status variant (#open | #inProgress | #resolved | #closed), assignedAnalyst as ?Principal, reporterPrincipal, createdAt, updatedAt, notes array of { author: Text, timestamp: Int, content: Text }, caseType: Text), and Incident Reports (unique ID, title, incidentType, description, affectedSystems, severity, reporterName, linkedCaseId: ?Text, createdAt). Use stable var arrays or HashMap with stable backup for persistence across upgrades.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-20",
+        "summary": "Implement role-based access control in the backend. Maintain a stable registry mapping Principal to UserProfile. Expose registerUser(name: Text) for first-time profile setup — assigns #analyst by default, but the very first registered user automatically receives #admin. Expose setUserRole(target: Principal, role: Role) callable only by Admin principals. Expose getMyProfile() query returning the caller's profile as ?UserProfile. Expose getAllUsers() query callable by Admin only, returning all profiles.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-21",
+        "summary": "Expose full CRUD backend functions for case management: createCase(title: Text, description: Text, severity: Severity, caseType: Text) callable by any authenticated registered user; getAllCases() query returning all cases; getCaseById(id: Text) query returning ?Case; updateCaseStatus(id: Text, newStatus: Status) callable by Admin and Analyst; addNoteToCase(id: Text, content: Text) callable by Admin and Analyst, storing { author: Principal-as-Text, timestamp: Int, content: Text }; assignCase(id: Text, analystPrincipal: Principal) callable by Admin only; deleteCase(id: Text) callable by Admin only. All mutating functions must verify caller identity and role before proceeding.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-22",
+        "summary": "Expose backend functions for incident report management: submitIncidentReport(title: Text, incidentType: Text, description: Text, affectedSystems: Text, severity: Severity, reporterName: Text) callable by any authenticated registered user — this must also auto-create a linked Case and return a record containing both the new incident report ID and the linked case ID; getAllIncidentReports() query returning all reports; getIncidentReportById(id: Text) query returning ?IncidentReport.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-implementation-plan.json",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

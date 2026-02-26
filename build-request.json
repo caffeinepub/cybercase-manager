@@ -1,0 +1,103 @@
+{
+  "kind": "build_request",
+  "title": "Wire up full backend: case storage, CRUD, and incident report management",
+  "projectName": "CyberShield",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-19",
+      "text": "Implement a complete backend data model in main.mo with stable storage for: User profiles (principal, displayName, role as #admin or #analyst, createdAt), Cases (unique ID, title, description, severity variant (#critical | #high | #medium | #low), status variant (#open | #inProgress | #resolved | #closed), assignedAnalyst as ?Principal, reporterPrincipal, createdAt, updatedAt, notes array of { author: Text, timestamp: Int, content: Text }, caseType: Text), and Incident Reports (unique ID, title, incidentType, description, affectedSystems, severity, reporterName, linkedCaseId: ?Text, createdAt). Use stable var arrays or HashMap with stable backup for persistence across upgrades.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "The full backend (case storage, CRUD functions, and incident report management) still needs to be wired up"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Stable storage is declared for cases, incidentReports, and userRegistry using stable var or stable HashMap backup arrays",
+        "Case type includes all required fields: id, title, description, severity, status, assignedAnalyst, reporterPrincipal, createdAt, updatedAt, notes, caseType",
+        "IncidentReport type includes all required fields: id, title, incidentType, description, affectedSystems, severity, reporterName, linkedCaseId, createdAt",
+        "UserProfile type includes principal, displayName, role, createdAt",
+        "Actor survives upgrade without data loss"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Implement role-based access control in the backend. Maintain a stable registry mapping Principal to UserProfile. Expose registerUser(name: Text) for first-time profile setup — assigns #analyst by default, but the very first registered user automatically receives #admin. Expose setUserRole(target: Principal, role: Role) callable only by Admin principals. Expose getMyProfile() query returning the caller's profile as ?UserProfile. Expose getAllUsers() query callable by Admin only, returning all profiles.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "The full backend (case storage, CRUD functions, and incident report management) still needs to be wired up"
+        ]
+      },
+      "acceptanceCriteria": [
+        "registerUser() creates a new profile with #analyst role unless it is the first registered user (receives #admin)",
+        "setUserRole() rejects non-admin callers with an error",
+        "getMyProfile() returns null if the caller has no profile",
+        "getAllUsers() returns all registered user profiles and rejects non-admin callers"
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "Expose full CRUD backend functions for case management: createCase(title: Text, description: Text, severity: Severity, caseType: Text) callable by any authenticated registered user; getAllCases() query returning all cases; getCaseById(id: Text) query returning ?Case; updateCaseStatus(id: Text, newStatus: Status) callable by Admin and Analyst; addNoteToCase(id: Text, content: Text) callable by Admin and Analyst, storing { author: Principal-as-Text, timestamp: Int, content: Text }; assignCase(id: Text, analystPrincipal: Principal) callable by Admin only; deleteCase(id: Text) callable by Admin only. All mutating functions must verify caller identity and role before proceeding.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "case storage, CRUD functions"
+        ]
+      },
+      "acceptanceCriteria": [
+        "createCase() generates a unique ID, sets createdAt and updatedAt to current time, sets status to #open, and persists the case",
+        "getAllCases() returns all stored cases without requiring authentication",
+        "getCaseById() returns the matching case or null",
+        "updateCaseStatus() updates the status and updatedAt timestamp; rejects unregistered callers",
+        "addNoteToCase() appends a note with author principal as Text and current timestamp; rejects unregistered callers",
+        "assignCase() rejects non-admin callers with an error",
+        "deleteCase() removes the case and rejects non-admin callers with an error"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Expose backend functions for incident report management: submitIncidentReport(title: Text, incidentType: Text, description: Text, affectedSystems: Text, severity: Severity, reporterName: Text) callable by any authenticated registered user — this must also auto-create a linked Case and return a record containing both the new incident report ID and the linked case ID; getAllIncidentReports() query returning all reports; getIncidentReportById(id: Text) query returning ?IncidentReport.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "incident report management"
+        ]
+      },
+      "acceptanceCriteria": [
+        "submitIncidentReport() persists a new incident report and auto-creates a corresponding case with caseType set to the incident type",
+        "The returned value from submitIncidentReport() includes both incidentId and linkedCaseId",
+        "The auto-created case has its linkedCaseId field set to the incident report ID",
+        "getAllIncidentReports() returns all stored incident reports",
+        "getIncidentReportById() returns the matching report or null"
+      ]
+    }
+  ],
+  "constraints": [
+    "All Motoko logic must remain in backend/main.mo as a single actor",
+    "Use stable storage patterns (stable var arrays or HashMap with stable backup) to ensure data survives canister upgrades",
+    "Do not break existing frontend hook signatures in useQueries.ts — backend function names and parameter order must match what the frontend already calls"
+  ],
+  "nonGoals": [
+    "No frontend changes in this build — only backend implementation",
+    "No external database integrations",
+    "No real-time WebSocket features"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

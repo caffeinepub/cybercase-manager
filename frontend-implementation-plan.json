@@ -1,0 +1,6 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Wire up full backend: case storage, CRUD, and incident report management",
+  "requirements": []
+}
